@@ -3,16 +3,11 @@ import * as Three from "three";
 export const pointsMoveData = [];
 export const earthSize = 65;
 
-const getRandomVector = () => {
-  const randomX = Math.random() * 2 - 1;
-  const randomY = Math.random() * 2 - 1;
-  return new Three.Vector2(randomX, randomY);
-};
 const particlesPlanet = (planet) => {
   const sprite = new Three.TextureLoader().load("texture/star.png");
 
   const particles = new Three.BufferGeometry();
-  const particlesCount = 1000;
+  const particlesCount = 2000;
 
   const positionPoints = new Float32Array(particlesCount * 3);
 
@@ -30,7 +25,7 @@ const particlesPlanet = (planet) => {
     positionPoints[iPos + 1] = y;
     positionPoints[iPos + 2] = z;
 
-    pointsMoveData[iPos] = { vectorOffset: getRandomVector(), theta, phi };
+    pointsMoveData[iPos] = { theta, phi };
   }
 
   particles.setAttribute(
