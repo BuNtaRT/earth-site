@@ -16,9 +16,19 @@ const initialScene = () => {
 
   const container = document.querySelector(".model-container");
 
+  //-------------------------- Background Image
+
+  const particleTexture = new Three.TextureLoader().load(
+    "./texture/background.webp"
+  );
+  particleTexture.colorSpace = Three.SRGBColorSpace;
+
+  scene.background = particleTexture;
+
   //-------------------------- Render
   const renderer = new Three.WebGLRenderer({ alpha: true, antialias: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
+
   container.appendChild(renderer.domElement);
 
   //-------------------------- Effect
