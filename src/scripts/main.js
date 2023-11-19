@@ -6,8 +6,11 @@ import animateParticles from "./scene/planet/animateParticles";
 import Stats from "stats.js";
 import particlesStars from "./scene/stars/particlesStars";
 import loadPlanet from "./scene/planet/load";
+import { moveCamera } from "./scene/operation";
+import Tween from "@tweenjs/tween.js";
+import "./scene/title/title";
 
-const [scene, composer, controls] = initialScene();
+const [scene, composer, controls, camera] = initialScene();
 
 //-------------------------- 3D Content
 let planet = await loadPlanet(scene);
@@ -37,9 +40,15 @@ const animate = () => {
       }
     });
     controls.update();
+    Tween.update();
+
     composer.render();
   }
   stats.end();
 };
 
+moveCamera();
+
 animate();
+
+export { scene, planet, camera };

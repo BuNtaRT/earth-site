@@ -39,7 +39,7 @@ const initialScene = () => {
 
   initialLight(scene);
 
-  return [scene, effectComposer, controls];
+  return [scene, effectComposer, controls, camera];
 };
 
 export default initialScene;
