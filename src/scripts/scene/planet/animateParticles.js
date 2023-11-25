@@ -1,11 +1,11 @@
 import { earthSize, pointsMoveData } from "./particlesPlanet";
 
-const speed = 0.00058;
+const speed = 0.001;
 const skipFrameCount = 2;
 const batchSize = 1;
 
 let currentlyBatch = 0;
-let skipFrame = 2;
+let skipFrame = 1;
 
 const animateParticles = (points) => {
   if (skipFrame <= 0) {

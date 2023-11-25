@@ -1,9 +1,8 @@
 import * as Three from "three";
 import postProcessing from "./render/post-processing";
 import orbitControl from "./interaction/orbit-control";
-import initialLight from "./light/light";
 
-const initialScene = () => {
+function initialScene() {
   //-------------------------- Setup
   const scene = new Three.Scene();
   const camera = new Three.PerspectiveCamera(
@@ -15,15 +14,6 @@ const initialScene = () => {
   camera.position.z = 10;
 
   const container = document.querySelector(".model-container");
-
-  //-------------------------- Background Image
-
-  const particleTexture = new Three.TextureLoader().load(
-    "./texture/background.webp"
-  );
-  particleTexture.colorSpace = Three.SRGBColorSpace;
-
-  scene.background = particleTexture;
 
   //-------------------------- Render
   const renderer = new Three.WebGLRenderer({ alpha: true, antialias: true });
@@ -37,9 +27,16 @@ const initialScene = () => {
   //-------------------------- Control
   const controls = orbitControl(camera, renderer);
 
-  initialLight(scene);
+  function resizeCanvas() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  }
+
+  window.addEventListener("resize", resizeCanvas);
 
   return [scene, effectComposer, controls];
-};
+}
 
 export default initialScene;

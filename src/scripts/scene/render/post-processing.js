@@ -9,14 +9,11 @@ const postProcessing = (scene, camera, renderer) => {
 
   const renderScene = new RenderPass(scene, camera);
   const bloomPass = new UnrealBloomPass(
-    new Three.Vector2(window.innerWidth, window.innerHeight),
-    1.5,
-    0.4,
-    0.85
+    new Three.Vector2(window.innerWidth, window.innerHeight)
   );
   bloomPass.threshold = 0;
-  bloomPass.strength = 0.3;
-  bloomPass.radius = 0.5;
+  bloomPass.strength = 0.35;
+  bloomPass.radius = 0.2;
 
   const outputPass = new OutputPass();
 
