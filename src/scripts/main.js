@@ -83,6 +83,8 @@ const animate = () => {
   requestAnimationFrame(animate);
 
   delta = clock.getDelta();
+  delta = delta > 0.06 ? 0.05 : delta;
+
   if ((coeffOfScale || coeffOfMove) && progress < 1) {
     progress += delta * smooth;
     if (coeffOfScale) {
