@@ -1,6 +1,8 @@
 import "./title.scss";
 import "../../utils/mathPrototype";
 
+const doublePI = Math.PI * 2;
+
 const mouse = {
   x: 0,
   y: 0,
@@ -44,22 +46,11 @@ const convertToParticles = () => {
   const height = textCoordinates.height;
   const width = textCoordinates.width;
 
-  // text
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
-      // for opacity (alpha) we need the 4th value in the [] of the 40000 elements
-      // if (textCoordinates.data[y * 4 * textCoordinates.width + x * 4 + 3] > 0) {
       if (textCoordinates.data[(y * textCoordinates.width + x) * 4 + 3] > 0) {
-        // particles.push(new Particle(x * 20, y * 20));
         particles.push(new Particle(x * resolution, y * resolution));
       }
-      // if (
-      //   textCoordinates.data[y * 4 * textCoordinates.width + x * 4 + 3] > 128
-      // ) {
-      //   let positionX = x + 10;
-      //   let positionY = y + 0;
-      //   particles.push(new Particle(positionX * 20, positionY * 20));
-      // }
     }
   }
 };
@@ -77,36 +68,36 @@ class Particle {
   draw() {
     ctx.fillStyle = "rgba(255, 255, 255, 1)";
     ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.arc(this.x, this.y, this.size, 0, doublePI);
     ctx.closePath();
     ctx.fill();
   }
 
   update() {
-    let dx = mouse.x - this.x;
-    let dy = mouse.y - this.y;
+    const dx = mouse.x - this.x;
+    const dy = mouse.y - this.y;
 
-    let distance = Math.sqrt(dx * dx + dy * dy);
-
-    let forceDirectionX = dx / distance;
-    let forceDirectionY = dy / distance;
-    let maxDistance = mouse.radius;
-
-    let force = (maxDistance - distance) / maxDistance;
-
-    let directionX = forceDirectionX * force * this.density;
-    let directionY = forceDirectionY * force * this.density;
+    const distance = Math.sqrt(dx * dx + dy * dy);
 
     if (distance < mouse.radius) {
+      const forceDirectionX = dx / distance;
+      const forceDirectionY = dy / distance;
+      const maxDistance = mouse.radius;
+
+      const force = (maxDistance - distance) / maxDistance;
+
+      const directionX = forceDirectionX * force * this.density;
+      const directionY = forceDirectionY * force * this.density;
+
       this.x -= directionX;
       this.y -= directionY;
     } else {
       if (this.x !== this.baseX) {
-        let dx = this.x - this.baseX;
+        const dx = this.x - this.baseX;
         this.x -= dx / 10;
       }
       if (this.y !== this.baseY) {
-        let dy = this.y - this.baseY;
+        const dy = this.y - this.baseY;
         this.y -= dy / 10;
       }
     }
