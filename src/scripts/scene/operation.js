@@ -1,4 +1,4 @@
-import { scene, planet, camera } from "../main";
+import { camera } from "../main";
 import { controls } from "./interaction/orbit-control";
 import Tween from "@tweenjs/tween.js";
 
