@@ -6,7 +6,7 @@ import animateParticles from "./scene/planet/animateParticles";
 import Stats from "stats.js";
 import particlesStars from "./scene/stars/particlesStars";
 import loadPlanet from "./scene/planet/load";
-import { moveCamera } from "./scene/operation";
+import { setPage } from "./scene/operation";
 import Tween from "@tweenjs/tween.js";
 import "./scene/title/title";
 
@@ -47,7 +47,7 @@ const animate = () => {
   stats.end();
 };
 
-moveCamera();
+setPage();
 
 animate();
 

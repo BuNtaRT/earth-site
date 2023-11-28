@@ -1,6 +1,14 @@
 import { camera } from "../main";
 import { controls } from "./interaction/orbit-control";
 import Tween from "@tweenjs/tween.js";
+import { updateText } from "./title/title";
+
+export const setPage = (page = 0) => {
+  moveCamera(page);
+  setTitleByPage(page);
+};
+
+//-------------------------- CAMERA
 
 export const moveCamera = (page = 0) => {
   const { cameraPos, targetPos } = pageCameraPosition[page];
@@ -54,3 +62,13 @@ const pageCameraPosition = [
     },
   },
 ];
+
+//-------------------------- TITLE
+
+const border = 150;
+
+const setTitleByPage = (page) => {
+  updateText(pageTitles[page], page ? border : 0);
+};
+
+export const pageTitles = ["Планета земля", "Планета земля", "Планета земля"];
