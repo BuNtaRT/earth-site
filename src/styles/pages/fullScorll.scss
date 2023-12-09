@@ -1,0 +1,20 @@
+.docSlider {
+  color: white !important;
+
+  .docSlider-pager {
+    animation: opacity 1s ease-in-out;
+  }
+}
+
+.hideDots {
+  position: absolute;
+  .docSlider-pager {
+    opacity: 0;
+  }
+}
+
+.showDots {
+  .docSlider-pager {
+    opacity: 1;
+  }
+}

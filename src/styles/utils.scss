@@ -1,0 +1,14 @@
+@mixin absoluteSize($property, $size, $min: false, $max) {
+  @if #{$min} {
+    #{$property}: max(min(calc((1vh + 1vw) * #{$size}), #{$max}), #{$min});
+  } @else {
+    #{$property}: calc((1vh + 1vw) * #{$size});
+  }
+}
+
+@mixin fontShadow($size, $color, $shadow) {
+  text-shadow: -#{$size}px -#{$size}px #{$shadow}px #{$color},
+    #{$size}px -#{$size}px #{$shadow}px #{$color},
+    -#{$size}px #{$size}px #{$shadow}px #{$color},
+    #{$size}px #{$size}px #{$shadow}px #{$color};
+}

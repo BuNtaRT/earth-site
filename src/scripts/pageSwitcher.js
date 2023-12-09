@@ -1,12 +1,39 @@
-import { camera } from "../main";
-import { controls } from "./interaction/orbit-control";
+import { camera } from "./main";
+import { controls } from "./scene/interaction/orbit-control";
 import Tween from "@tweenjs/tween.js";
-import { updateText } from "./title/title";
+import { updateText } from "./scene/title/title";
+import { docSlider } from "./libs/docSlider/docSlider";
+import { setHtml as page0 } from "../pages/earth/earthPage";
+
+const pageScript = [page0];
 
 export const setPage = (page = 0) => {
+  pageScript[page]();
+
+  activityFullScreenPagination(!!page);
   moveCamera(page);
   setTitleByPage(page);
 };
+
+//-------------------------- FULL PAGE SCROLL
+const fullPageScroll = document.querySelector(".docSlider");
+
+const activityFullScreenPagination = (enable) => {
+  docSlider.enable(enable);
+  fullPageScroll.style.pointerEvents = enable ? "all" : "none";
+  fullPageScroll.classList.remove(enable ? "hideDots" : "showDots");
+  fullPageScroll.classList.add(enable ? "showDots" : "hideDots");
+};
+
+//-------------------------- TITLE
+
+const border = 150;
+
+const setTitleByPage = (page) => {
+  updateText(pageTitles[page], page ? border : 0);
+};
+
+export const pageTitles = ["Земля", "Положение", "Поверхность"];
 
 //-------------------------- CAMERA
 
@@ -62,13 +89,3 @@ const pageCameraPosition = [
     },
   },
 ];
-
-//-------------------------- TITLE
-
-const border = 150;
-
-const setTitleByPage = (page) => {
-  updateText(pageTitles[page], page ? border : 0);
-};
-
-export const pageTitles = ["Планета земля", "Планета земля", "Планета земля"];

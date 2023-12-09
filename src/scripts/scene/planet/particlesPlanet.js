@@ -42,7 +42,6 @@ const particlesPlanet = (planet) => {
   const particlesMesh = new Three.Points(particles, particlesMaterial);
 
   planet.add(particlesMesh);
-  console.log(planet);
 };
 
 export default particlesPlanet;

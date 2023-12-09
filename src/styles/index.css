@@ -1,11 +1,3 @@
-* {
-  padding: 0;
-  margin: 0;
-}
-body {
-  background: black;
-}
-
 @font-face {
   font-family: 'SaarSPDemo';
   src: url('../../static/fonts/SaarSPDemo.otf');

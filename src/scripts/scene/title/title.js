@@ -15,7 +15,6 @@ let particleText = new ParticleText(canvas, ctx);
 //-------------------------- OPERATIONS
 export const updateText = (text, border) => {
   particles = particleText.updateText(text, border);
-  console.log(particles);
 };
 
 //-------------------------- ANIMATION

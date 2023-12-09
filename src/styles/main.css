@@ -1,5 +1,11 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
 body {
   display: flex !important;
+  background: black !important;
 }
 
 /*# sourceMappingURL=main.css.map */
