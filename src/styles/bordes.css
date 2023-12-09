@@ -1,0 +1,53 @@
+/*For more stable*/
+.borders {
+  pointer-events: none;
+  z-index: 3;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+
+.borders_show .border_top::after {
+  transition: max-height 10s ease-out;
+  max-height: 100%;
+}
+.borders_show .border_bottom::after {
+  transition: max-height 10s ease-out;
+  max-height: 100%;
+}
+
+.borders_hide .border_top::after {
+  transition: max-height 10s ease-out;
+  max-height: 0;
+}
+.borders_hide .border_bottom::after {
+  transition: max-height 10s ease-out;
+  max-height: 0;
+}
+
+.border, .border_bottom, .border_top {
+  height: 50%;
+  position: relative;
+}
+.border::after, .border_bottom::after, .border_top::after {
+  left: 0;
+  position: absolute;
+  height: 75px;
+  width: 100%;
+  background: #101118;
+}
+@media (min-width: 768px) and (min-height: 600px) {
+  .border::after, .border_bottom::after, .border_top::after {
+    content: "";
+  }
+}
+
+.border_top::after {
+  top: 0;
+}
+
+.border_bottom::after {
+  bottom: 0;
+}
+
+/*# sourceMappingURL=bordes.css.map */

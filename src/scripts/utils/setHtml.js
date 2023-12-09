@@ -1,4 +1,4 @@
-export const setPage = (id, html) => {
+export const setHtml = (id, html) => {
   const element = document.querySelector(id);
 
   if (element) element.innerHTML = html;

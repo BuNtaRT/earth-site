@@ -8,49 +8,91 @@
   height: calc(100% - 400px);
   padding: 200px 100px;
 }
+.earth_button {
+  @include absoluteSize(font-size, 2.5, 20px, 150px);
+  user-select: none;
+  margin-top: 16px;
+  padding: 8px 16px 8px 34px;
+
+  color: $mainFontColor;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Alumni Sans Pinstripe", monospace;
+  font-weight: 400;
+  letter-spacing: 15px;
+}
+
+.earth_button_effect {
+  @extend .earth_button;
+
+  pointer-events: none;
+  padding-left: 12px;
+  padding-right: 0;
+  margin: 0;
+  letter-spacing: 15px;
+  position: absolute;
+  animation: clickEffect 0.5s linear forwards;
+}
 
 .earth_menu {
   pointer-events: auto;
-  p {
-    @include absoluteSize(font-size, 2.5, 20px, 150px);
-    @include fontShadow(0, $backgroundBlackStrong, 0);
+}
 
-    position: relative;
-    cursor: pointer;
-    user-select: none;
-    transition: all 0.5s ease-in;
-    margin-top: 16px;
-    padding: 8px 16px 8px 34px;
+.earth_menu_button {
+  @include fontShadow(0, $backgroundBlackStrong, 0);
+  @extend .earth_button;
 
-    color: $mainFontColor;
-    text-align: center;
-    text-transform: uppercase;
-    font-family: "Alumni Sans Pinstripe", monospace;
-    font-weight: 400;
-    letter-spacing: 15px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.5s ease-in;
 
-    &:hover {
-      @include fontShadow(2, $mainFontColor, 5);
-      &::after {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-      }
-    }
-
+  &:hover {
+    @include fontShadow(3, $mainFontColor, 5);
     &::after {
-      content: "";
-      background: $backgroundBlackLite;
-
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      left: 0;
-      bottom: 0;
-
-      transition: clip-path 0.25s ease-out;
-      clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
-
-      border: 5px #dde3ff dotted;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
+  }
+
+  &::after {
+    content: "";
+    background: $backgroundBlackLite;
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    left: 0;
+    bottom: 0;
+
+    transition: clip-path 0.25s ease-out;
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+
+    border: 5px $mainFontColor dotted;
+  }
+}
+
+@keyframes clickEffect {
+  0% {
+    @include fontShadow(0, $mainFontColor, 0);
+
+    scale: 1;
+    opacity: 1;
+  }
+  15% {
+    @include fontShadow(8, $mainFontColor, 5);
+    opacity: 1;
+  }
+  50% {
+    @include fontShadow(16, $mainFontColor, 15);
+
+    scale: 1.15;
+    opacity: 0.15;
+  }
+  100% {
+    @include fontShadow(25, $mainFontColor, 30);
+
+    scale: 1.15;
+    opacity: 0;
+    letter-spacing: 30px;
   }
 }

@@ -1,8 +1,9 @@
 .canvas-block {
-  display: flex;
-  background: rgba(0, 0, 0, 0);
+  z-index: 2;
   pointer-events: none;
+  display: flex;
   position: absolute;
+  background: rgba(0, 0, 0, 0);
 }
 
 /*# sourceMappingURL=title.css.map */

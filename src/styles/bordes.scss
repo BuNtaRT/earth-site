@@ -1,0 +1,75 @@
+@import "./utils";
+@import "./palette";
+
+.borders {
+  pointer-events: none;
+  z-index: 3;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+
+@mixin border_control($show) {
+  &::after {
+    transition: max-height 10s ease-out;
+    @if $show == true {
+      max-height: 100%;
+    } @else {
+      max-height: 0;
+    }
+  }
+}
+
+.borders_show {
+  .border_top {
+    @include border_control(true);
+  }
+  .border_bottom {
+    @include border_control(true);
+  }
+}
+
+.borders_hide {
+  .border_top {
+    @include border_control(false);
+  }
+  .border_bottom {
+    @include border_control(false);
+  }
+}
+
+@mixin border_after {
+  @media (min-width: 768px) and (min-height: 600px) {
+    content: "";
+  }
+
+  left: 0;
+  position: absolute;
+
+  height: 75px;
+  width: 100%;
+  background: $black;
+}
+
+.border {
+  height: 50%;
+  position: relative;
+
+  &::after {
+    @include border_after;
+  }
+}
+
+.border_top {
+  @extend .border;
+  &::after {
+    top: 0;
+  }
+}
+
+.border_bottom {
+  @extend .border;
+  &::after {
+    bottom: 0;
+  }
+}

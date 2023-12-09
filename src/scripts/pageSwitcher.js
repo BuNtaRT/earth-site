@@ -3,23 +3,41 @@ import { controls } from "./scene/interaction/orbit-control";
 import Tween from "@tweenjs/tween.js";
 import { updateText } from "./scene/title/title";
 import { docSlider } from "./libs/docSlider/docSlider";
-import { setHtml as page0 } from "../pages/earth/earthPage";
+import { initPage as page0 } from "../pages/earth/earthPage";
+import { initPage as page1 } from "../pages/position/positionPage";
+import { initPage as page2 } from "../pages/atmosphere/atmospherePage";
+import { initPage as page3 } from "../pages/surface/surfacePage";
 
-const pageScript = [page0];
+const pageScript = [page0, page1, page2, page3];
+const modelContainer = document.querySelector(".model-container");
+const borders = document.querySelector(".borders");
 
-export const setPage = (page = 0) => {
+export const setPage = (page = 0, fromMain = false) => {
   pageScript[page]();
 
-  activityFullScreenPagination(!!page);
+  setFullPageScroll(page);
   moveCamera(page);
   setTitleByPage(page);
+
+  if (page === 0) {
+    borders.classList.remove("borders_show");
+    borders.classList.add("borders_hide");
+    modelContainer.classList.remove("blur");
+  } else {
+    borders.classList.remove("borders_hide");
+    borders.classList.add("borders_show");
+    modelContainer.classList.add("blur");
+  }
 };
 
 //-------------------------- FULL PAGE SCROLL
 const fullPageScroll = document.querySelector(".docSlider");
 
-const activityFullScreenPagination = (enable) => {
+const setFullPageScroll = (page) => {
+  const enable = !!page;
+
   docSlider.enable(enable);
+  docSlider.jumpPage(page);
   fullPageScroll.style.pointerEvents = enable ? "all" : "none";
   fullPageScroll.classList.remove(enable ? "hideDots" : "showDots");
   fullPageScroll.classList.add(enable ? "showDots" : "hideDots");
@@ -36,13 +54,20 @@ const setTitleByPage = (page) => {
 export const pageTitles = ["Земля", "Положение", "Поверхность"];
 
 //-------------------------- CAMERA
-
+let isFirst = true;
 export const moveCamera = (page = 0) => {
+  if (isFirst) {
+    isFirst = false;
+    return;
+  }
+
   const { cameraPos, targetPos } = pageCameraPosition[page];
-  if (page !== 0) controls.enabled = false;
+  controls.enableDamping = page === 0;
 
   lerpVector(controls.target, targetPos);
-  lerpVector(camera.position, cameraPos, () => (controls.enabled = !!!page));
+  lerpVector(camera.position, cameraPos, () => {
+    controls.enabled = !!!page;
+  });
 };
 
 const lerpVector = (source, end, callback) => {
@@ -53,14 +78,12 @@ const lerpVector = (source, end, callback) => {
         y: end.y,
         z: end.z,
       },
-      1500
+      3000
     )
-    //.delay(100)
+    .delay(250)
     .easing(Tween.Easing.Circular.Out)
     .start()
-    .onComplete(() => {
-      if (callback) callback();
-    });
+    .onComplete(callback);
 };
 
 const pageCameraPosition = [

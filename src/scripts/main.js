@@ -1,5 +1,6 @@
 import "../styles/index.css";
 import "../styles/main.scss";
+import "../styles/bordes.scss";
 import particlesPlanet from "./scene/planet/particlesPlanet";
 import initialScene from "./scene/initial-scene";
 import * as Three from "three";
@@ -52,7 +53,6 @@ const animate = () => {
 };
 
 setPage();
-
 animate();
 
 export { scene, planet, camera };

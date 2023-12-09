@@ -1,7 +1,36 @@
 import html from "./earthPage.html";
-import { setPage } from "../../scripts/utils/setPage";
+import { setHtml } from "../../scripts/utils/setHtml";
 import "./earchPage.style.scss";
+import { setPage } from "../../scripts/pageSwitcher";
 
-export const setHtml = () => {
-  setPage("#page1", html);
+export const initPage = () => {
+  setHtml("#page1", html);
+  const positionButton = document.querySelector("#earth_menu_position");
+  const atmosphereButton = document.querySelector("#earth_menu_atmosphere");
+  const surfaceButton = document.querySelector("#earth_menu_surface");
+
+  positionButton.onclick = handleClick(1);
+  atmosphereButton.onclick = handleClick(2);
+  surfaceButton.onclick = handleClick(3);
 };
+
+const handleClick =
+  (goto) =>
+  ({ target }) => {
+    const text = target.innerHTML;
+    const rect = target.getBoundingClientRect();
+
+    const effect = document.createElement("p");
+    effect.innerHTML = text;
+    effect.classList.add("earth_button_effect");
+    effect.style.top = rect.top + "px";
+    effect.style.left = rect.left + "px";
+    effect.style.width = target.clientWidth + "px";
+
+    target.parentElement.appendChild(effect);
+
+    setTimeout(() => setPage(goto), 150);
+    setTimeout(() => {
+      effect.remove();
+    }, 2000);
+  };

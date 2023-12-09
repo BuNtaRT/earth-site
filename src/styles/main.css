@@ -8,4 +8,14 @@ body {
   background: black !important;
 }
 
+.model-container {
+  z-index: 0;
+  transition: filter 4s ease-in;
+  filter: blur(0);
+}
+
+.blur {
+  filter: blur(6px);
+}
+
 /*# sourceMappingURL=main.css.map */
