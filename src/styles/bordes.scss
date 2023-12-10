@@ -11,11 +11,12 @@
 
 @mixin border_control($show) {
   &::after {
-    transition: max-height 10s ease-out;
     @if $show == true {
-      max-height: 100%;
+      transition: height 1.5s linear;
+      height: 75px;
     } @else {
-      max-height: 0;
+      transition: height 6s ease-out;
+      height: 0;
     }
   }
 }
@@ -46,7 +47,6 @@
   left: 0;
   position: absolute;
 
-  height: 75px;
   width: 100%;
   background: $black;
 }

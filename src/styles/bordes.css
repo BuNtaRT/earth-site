@@ -8,21 +8,21 @@
 }
 
 .borders_show .border_top::after {
-  transition: max-height 10s ease-out;
-  max-height: 100%;
+  transition: height 1.5s linear;
+  height: 75px;
 }
 .borders_show .border_bottom::after {
-  transition: max-height 10s ease-out;
-  max-height: 100%;
+  transition: height 1.5s linear;
+  height: 75px;
 }
 
 .borders_hide .border_top::after {
-  transition: max-height 10s ease-out;
-  max-height: 0;
+  transition: height 6s ease-out;
+  height: 0;
 }
 .borders_hide .border_bottom::after {
-  transition: max-height 10s ease-out;
-  max-height: 0;
+  transition: height 6s ease-out;
+  height: 0;
 }
 
 .border, .border_bottom, .border_top {
@@ -32,7 +32,6 @@
 .border::after, .border_bottom::after, .border_top::after {
   left: 0;
   position: absolute;
-  height: 75px;
   width: 100%;
   background: #101118;
 }

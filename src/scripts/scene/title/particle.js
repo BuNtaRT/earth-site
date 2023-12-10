@@ -15,12 +15,16 @@ const mouse = {
 };
 
 export class Particle {
-  constructor(x, y) {
+  constructor(x, y, offsetX, offsetY) {
     this.x = x;
     this.y = y;
     this.size = size;
-    this.baseX = this.x;
-    this.baseY = this.y;
+    this.offsetX = offsetX;
+    this.offsetY = offsetY;
+    this.initialX = this.x;
+    this.initialY = this.y;
+    this.baseX = offsetX + this.initialX;
+    this.baseY = offsetY + this.initialY;
     this.density = Math.random() * 40 + 5;
   }
 
@@ -32,7 +36,14 @@ export class Particle {
     ctx.fill();
   }
 
-  update() {
+  update(offsetX, offsetY) {
+    if (offsetX !== this.offsetX || offsetY !== this.offsetY) {
+      this.baseX = this.initialX + offsetX;
+      this.offsetX = offsetX;
+      this.baseY = this.initialY + offsetY;
+      this.offsetY = offsetY;
+    }
+
     const dx = mouse.x - this.x;
     const dy = mouse.y - this.y;
 

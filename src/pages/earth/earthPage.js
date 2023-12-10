@@ -29,7 +29,7 @@ const handleClick =
 
     target.parentElement.appendChild(effect);
 
-    setTimeout(() => setPage(goto), 150);
+    setTimeout(() => setPage(goto, 0), 200);
     setTimeout(() => {
       effect.remove();
     }, 2000);

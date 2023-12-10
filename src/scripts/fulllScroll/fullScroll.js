@@ -4,6 +4,6 @@ import { setPage } from "../pageSwitcher";
 
 docSlider.init({
   beforeChange: (index, page, toIndex, toPage, type) => {
-    if (index !== toIndex && type === "scroll") setPage(toIndex, !!!toIndex);
+    if (index !== toIndex && type === "scroll") setPage(toIndex, index);
   },
 });
