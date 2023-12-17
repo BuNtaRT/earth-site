@@ -9,6 +9,7 @@ body {
 }
 
 .model-container {
+  display: none;
   z-index: 0;
   transition: filter 4s ease-in;
   filter: blur(0);

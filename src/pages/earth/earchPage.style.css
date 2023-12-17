@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Alumni+Sans+Pinstripe&display=swap");
 /*For more stable*/
-.earth {
+.earth_page {
   display: flex;
   align-items: flex-end;
   height: calc(100% - 400px);

@@ -1,0 +1,151 @@
+@import "../../styles/palette";
+
+.position_container {
+  display: flex;
+  height: 80%;
+  min-height: 500px;
+
+  transform: scale(1.5);
+}
+.solarSystem {
+  display: flex;
+  transform-style: preserve-3d;
+  height: 100%;
+  width: 100%;
+
+  transform: rotateX(70deg);
+
+  align-items: center;
+  justify-content: center;
+}
+@mixin orbit($size, $speed) {
+  pointer-events: auto;
+  transform-style: preserve-3d;
+  position: absolute;
+
+  height: #{$size};
+  width: #{$size};
+
+  border: 1px $secondWhite solid;
+  border-radius: 100%;
+
+  //rotate: -150deg;
+  animation: #{$speed}s infinite orbitAnim linear;
+}
+
+@mixin planetAnimMix($size, $animName) {
+  $offsetTop: calc(-#{$size} / 7);
+  $blur: calc(#{$size} / 3);
+
+  @keyframes #{$animName} {
+    0% {
+      box-shadow: inset 0 0 rgba(0, 0, 0, 0.5);
+      rotate: 0deg;
+    }
+    49% {
+      box-shadow: inset #{$size} $offsetTop $blur rgba(0, 0, 0, 0.5);
+    }
+    51% {
+      box-shadow: inset #{$size} $offsetTop $blur rgba(0, 0, 0, 0.5);
+    }
+    51.01% {
+      box-shadow: inset -#{$size} $offsetTop $blur rgba(0, 0, 0, 0.5);
+    }
+    100% {
+      rotate: 360deg;
+      box-shadow: inset 0 0 $blur rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+@mixin planet($color, $size, $speed, $name) {
+  pointer-events: auto;
+  transform-style: preserve-3d;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: calc(-#{$size} / 2);
+
+  transform: rotateX(-70deg);
+
+  height: #{$size};
+  width: #{$size};
+
+  background: #{$color};
+  border-radius: 100%;
+
+  @include planetAnimMix($size, $name);
+  animation: #{$speed}s infinite #{$name} linear;
+}
+
+.solarSystem_sun {
+  pointer-events: auto;
+  transform-style: preserve-3d;
+  position: absolute;
+
+  height: 60px;
+  width: 60px;
+  transform: rotateX(-70deg);
+
+  background: $sun;
+  box-shadow: 0 0 50px $sun;
+  border-radius: 100%;
+}
+.solarSystem_mercury {
+  @include orbit(58px, 2.45);
+  .solarSystem_mercury_planet {
+    @include planet($mercury, 10px, 2.45, "mercury_anim");
+  }
+}
+.solarSystem_venus {
+  @include orbit(108px, 6.17);
+  .solarSystem_venus_planet {
+    @include planet($venus, 14px, 6.17, venus_anim);
+  }
+}
+.solarSystem_earth {
+  @include orbit(150px, 10);
+  .solarSystem_earth_planet {
+    @include planet($earth, 14.5px, 10, earth_anim);
+  }
+}
+.solarSystem_mars {
+  @include orbit(228px, 18.8);
+  .solarSystem_mars_planet {
+    @include planet($mars, 10px, 18.8, mars_anim);
+  }
+}
+.solarSystem_jupiter {
+  @include orbit(310px, 110.8);
+  .solarSystem_jupiter_planet {
+    @include planet($jupiter, 25.8px, 110.8, jupiter_anim);
+  }
+}
+.solarSystem_saturn {
+  @include orbit(380px, 294);
+  .solarSystem_saturn_planet {
+    @include planet($saturn, 16.4px, 294, saturn_anim);
+  }
+}
+.solarSystem_uranus {
+  @include orbit(450px, 500);
+  .solarSystem_uranus_planet {
+    @include planet($uranus, 13.7px, 840, uranus_anim);
+  }
+}
+.solarSystem_neptune {
+  @include orbit(500px, 840);
+  .solarSystem_neptune_planet {
+    @include planet($neptune, 13.2px, 1647, neptune_anim);
+  }
+}
+
+@keyframes orbitAnim {
+  0% {
+    rotate: 0deg;
+  }
+
+  100% {
+    rotate: -360deg;
+  }
+}
