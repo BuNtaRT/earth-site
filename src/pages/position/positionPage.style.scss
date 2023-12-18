@@ -18,6 +18,7 @@
   align-items: center;
   justify-content: center;
 }
+
 @mixin orbit($size, $speed) {
   pointer-events: auto;
   transform-style: preserve-3d;
@@ -35,11 +36,11 @@
 
 @mixin planetAnimMix($size, $animName) {
   $offsetTop: calc(-#{$size} / 7);
-  $blur: calc(#{$size} / 3);
+  $blur: calc(#{$size} / 2);
 
   @keyframes #{$animName} {
     0% {
-      box-shadow: inset 0 0 rgba(0, 0, 0, 0.5);
+      box-shadow: inset 0 0 $blur rgba(0, 0, 0, 0.5);
       rotate: 0deg;
     }
     49% {
@@ -109,6 +110,16 @@
     @include planet($earth, 14.5px, 10, earth_anim);
   }
 }
+.solarSystem_earth_moon {
+  //@include orbit(30px, 0.77);
+  @include orbit(30px, 0.77);
+  margin-top: -14.5px;
+  margin-left: 60px;
+  .solarSystem_earth_moon_planet {
+    @include planet($moon, 7px, 10, moon_anim);
+    animation: 0.71495s infinite moonAnim linear;
+  }
+}
 .solarSystem_mars {
   @include orbit(228px, 18.8);
   .solarSystem_mars_planet {
@@ -130,16 +141,24 @@
 .solarSystem_uranus {
   @include orbit(450px, 500);
   .solarSystem_uranus_planet {
-    @include planet($uranus, 13.7px, 840, uranus_anim);
+    @include planet($uranus, 13.7px, 500, uranus_anim);
   }
 }
 .solarSystem_neptune {
   @include orbit(500px, 840);
   .solarSystem_neptune_planet {
-    @include planet($neptune, 13.2px, 1647, neptune_anim);
+    @include planet($neptune, 13.2px, 840, neptune_anim);
   }
 }
 
+@keyframes moonAnim {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}
 @keyframes orbitAnim {
   0% {
     rotate: 0deg;
