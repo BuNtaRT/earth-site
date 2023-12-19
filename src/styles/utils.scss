@@ -1,10 +1,10 @@
 $unit: calc(1vh + 1vw);
 
-@mixin absoluteSize($property, $size, $min: false, $max) {
-  @if #{$min} {
-    #{$property}: clampVal(getUnit(#{$size}), #{$min}, #{$max});
+@function absoluteSize($size, $min: false, $max:0) {
+  @if $min != false {
+    @return clampVal(getUnit(#{$size}), #{$min}, #{$max});
   } @else {
-    #{$property}: getUnit(#{$size});
+    @return getUnit(#{$size});
   }
 }
 

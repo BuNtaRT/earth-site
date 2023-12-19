@@ -1,17 +1,32 @@
 @import "../../styles/palette";
+@import "../../styles/utils";
 
 .position_container {
   display: flex;
-  height: 80%;
-  min-height: 500px;
+  gap: 16px;
 
-  transform: scale(1.5);
+  align-items: end;
+
+  padding-left: 16px;
+  padding-right: 24px;
+  height: 90%;
+  min-height: 500px;
 }
+
+.text {
+  width: 30%;
+  height: absoluteSize(21);
+  p {
+    text-indent: absoluteSize(0.8);
+    font-size: absoluteSize(0.8);
+  }
+}
+
 .solarSystem {
   display: flex;
   transform-style: preserve-3d;
-  height: 100%;
-  width: 100%;
+  height: 80%;
+  width: 40%;
 
   transform: rotateX(70deg);
 

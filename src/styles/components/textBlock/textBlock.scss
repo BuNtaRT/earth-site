@@ -1,0 +1,11 @@
+@import "../../palette";
+
+.textBlock {
+  min-height: fit-content;
+  min-width: 32px;
+
+  padding: 16px;
+
+  backdrop-filter: hue-rotate(300deg);
+  border: 5px $mainFontColor dotted;
+}

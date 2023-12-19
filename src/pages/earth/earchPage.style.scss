@@ -9,7 +9,7 @@
   padding: 200px 100px;
 }
 .earth_button {
-  @include absoluteSize(font-size, 2.5, 20px, 150px);
+  font-size: absoluteSize( 2.5, 20px, 150px);
   user-select: none;
   margin-top: 16px;
   padding: 8px 16px 8px 34px;

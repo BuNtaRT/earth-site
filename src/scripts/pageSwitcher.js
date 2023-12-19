@@ -8,7 +8,7 @@ import { initPage as page1 } from "../pages/position/positionPage";
 import { initPage as page2 } from "../pages/atmosphere/atmospherePage";
 import { initPage as page3 } from "../pages/surface/surfacePage";
 
-const pageScript = [page1, page0, page2, page3];
+const pageScript = [page0, page1, page2, page3];
 const modelContainer = document.querySelector(".model-container");
 const borders = document.querySelector(".borders");
 
