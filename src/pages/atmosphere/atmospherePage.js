@@ -1,6 +1,7 @@
 import { setHtml } from "../../scripts/utils/setHtml";
-import html from "../earth/earthPage.html";
+import html from "./atmospherePage.html";
+import "./atmospherePage.style.scss";
 
 export const initPage = () => {
-  setHtml("#page2", html);
+  setHtml("#page3", html);
 };

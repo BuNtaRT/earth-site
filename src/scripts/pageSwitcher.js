@@ -49,7 +49,7 @@ const setTitleByPage = (page, fromPage) => {
   updateText(pageTitles[page], page, fromPage);
 };
 
-export const pageTitles = ["Земля", "Положение", "Поверхность"];
+export const pageTitles = ["Земля", "Положение", "Атмосфера"];
 
 //-------------------------- CAMERA
 let isFirst = true;
@@ -111,6 +111,18 @@ const pageCameraPosition = [
     targetPos: {
       x: 8,
       y: 0,
+      z: 8,
+    },
+  },
+  {
+    cameraPos: {
+      x: 0,
+      y: 4,
+      z: 1.5,
+    },
+    targetPos: {
+      x: 8,
+      y: 8,
       z: 8,
     },
   },

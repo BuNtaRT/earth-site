@@ -1,3 +1,23 @@
+.atmosphere_clouds {
+  width: 100%;
+}
 
+.atmosphere_cloud {
+  position: absolute;
+  object-fit: cover;
+  height: 100vh;
+}
+
+.cloud1 {
+  z-index: 1;
+}
+
+.cloud2 {
+  z-index: 2;
+}
+
+.cloud3 {
+  z-index: 3;
+}
 
 /*# sourceMappingURL=atmospherePage.style.css.map */

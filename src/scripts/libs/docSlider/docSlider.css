@@ -87,7 +87,7 @@ html:active, body:active,
 .docSlider-page {
   height: inherit;
   width: inherit;
-  overflow: auto;
+  overflow: hidden;
   position: absolute;
   overflow-scrolling: touch;
 }
