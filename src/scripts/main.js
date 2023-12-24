@@ -5,7 +5,6 @@ import particlesPlanet from "./scene/planet/particlesPlanet";
 import initialScene from "./scene/initial-scene";
 import * as Three from "three";
 import animateParticles from "./scene/planet/animateParticles";
-import Stats from "stats.js";
 import particlesStars from "./scene/stars/particlesStars";
 import loadPlanet from "./scene/planet/load";
 import { setPage } from "./pageSwitcher";

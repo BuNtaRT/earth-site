@@ -1,6 +1,6 @@
 $unit: calc(1vh + 1vw);
 
-@function absoluteSize($size, $min: false, $max:0) {
+@function absoluteSize($size, $min: false, $max: 0) {
   @if $min != false {
     @return clampVal(getUnit(#{$size}), #{$min}, #{$max});
   } @else {
@@ -22,4 +22,32 @@ $unit: calc(1vh + 1vw);
 /*For more stable*/
 @function clampVal($value, $min, $max) {
   @return max(min($value, $max), $min);
+}
+
+@mixin mediaProp($property, $es: 0, $sm:0, $md:0, $ld:0, $el:0) {
+  @if $es != 0 {
+    @media only screen and (max-width: 600px) {
+      #{$property}: #{$es};
+    }
+  }
+  @if $sm != 0 {
+    @media only screen and (min-width: 600px) {
+      #{$property}: #{$sm};
+    }
+  }
+  @if $md != 0 {
+    @media only screen and (min-width: 768px) {
+      #{$property}: #{$md};
+    }
+  }
+  @if $ld != 0 {
+    @media only screen and (min-width: 992px) {
+      #{$property}: #{$ld};
+    }
+  }
+  @if $el != 0 {
+    @media only screen and (min-width: 1200px) {
+      #{$property}: #{$el};
+    }
+  }
 }

@@ -1,12 +1,54 @@
-@font-face {
-  font-family: 'SaarSPDemo';
-  src: url('../../static/fonts/SaarSPDemo.otf');
+/*For more stable*/
+.borders {
+  pointer-events: none;
+  z-index: 3;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
 }
-@font-face {
-  font-family: 'jekr';
-  src: url('../../static/fonts/JEKR.TTF');
+
+.borders_show .border_top::after {
+  transition: height 1.5s linear;
+  height: 75px;
 }
-@font-face {
-  font-family: 'BankGothicMedium';
-  src: url('../../static/fonts/BankGothicMedium.ttf');
+.borders_show .border_bottom::after {
+  transition: height 1.5s linear;
+  height: 75px;
 }
+
+.borders_hide .border_top::after {
+  transition: height 6s ease-out;
+  height: 0;
+}
+.borders_hide .border_bottom::after {
+  transition: height 6s ease-out;
+  height: 0;
+}
+
+.border, .border_bottom, .border_top {
+  height: 50%;
+  position: relative;
+}
+.border::after, .border_bottom::after, .border_top::after {
+  left: 0;
+  position: absolute;
+  width: 100%;
+  background: #101118;
+}
+@media (min-width: 768px) and (min-height: 600px) {
+  .border::after, .border_bottom::after, .border_top::after {
+    content: "";
+  }
+}
+
+.border_top::after {
+  top: 0;
+}
+
+.border_bottom::after {
+  bottom: 0;
+}
+
+/*For more stable*/
+
+/*# sourceMappingURL=index.css.map */

@@ -1,11 +1,14 @@
 @import "../../palette";
 
-.textBlock {
-  min-height: fit-content;
+.textBlockContainer {
+  transform-style: preserve-3d;
+  perspective: 1000px;
   min-width: 32px;
+  min-height: fit-content;
 
   padding: 16px;
 
   backdrop-filter: hue-rotate(300deg);
   border: 5px $mainFontColor dotted;
+
 }

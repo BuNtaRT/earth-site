@@ -1,31 +1,153 @@
 /*For more stable*/
-.position_container {
-  display: flex;
-  gap: 16px;
-  align-items: end;
-  padding-left: 16px;
-  padding-right: 24px;
-  height: 90%;
-  min-height: 500px;
+.borders {
+  pointer-events: none;
+  z-index: 3;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
 }
 
-.text {
-  width: 30%;
-  height: calc((1vh + 1vw) * 21);
+.borders_show .border_top::after {
+  transition: height 1.5s linear;
+  height: 75px;
+}
+.borders_show .border_bottom::after {
+  transition: height 1.5s linear;
+  height: 75px;
+}
+
+.borders_hide .border_top::after {
+  transition: height 6s ease-out;
+  height: 0;
+}
+.borders_hide .border_bottom::after {
+  transition: height 6s ease-out;
+  height: 0;
+}
+
+.border, .border_bottom, .border_top {
+  height: 50%;
+  position: relative;
+}
+.border::after, .border_bottom::after, .border_top::after {
+  left: 0;
+  position: absolute;
+  width: 100%;
+  background: #101118;
+}
+@media (min-width: 768px) and (min-height: 600px) {
+  .border::after, .border_bottom::after, .border_top::after {
+    content: "";
+  }
+}
+
+.border_top::after {
+  top: 0;
+}
+
+.border_bottom::after {
+  bottom: 0;
+}
+
+/*For more stable*/
+.position_container {
+  display: grid;
+  gap: 16px;
+  align-items: center;
+  padding: 250px 24px 75px 16px;
+  height: min-content;
+  min-height: 300px;
+}
+@media only screen and (max-width: 600px) {
+  .position_container {
+    grid-template-columns: 1fr;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .position_container {
+    grid-template-columns: 1fr;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .position_container {
+    grid-template-columns: 1fr;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .position_container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .text {
+    height: false;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .text {
+    height: false;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .text {
+    height: calc((1vh + 1vw) * 9);
+  }
+}
+@media only screen and (min-width: 992px) {
+  .text {
+    height: calc((1vh + 1vw) * 24);
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .text {
+    height: calc((1vh + 1vw) * 19);
+  }
 }
 .text p {
   text-indent: calc((1vh + 1vw) * 0.8);
   font-size: calc((1vh + 1vw) * 0.8);
 }
+.text p a {
+  cursor: pointer;
+  text-decoration: none;
+  color: #9cb6ff;
+}
 
 .solarSystem {
   display: flex;
   transform-style: preserve-3d;
-  height: 80%;
-  width: 40%;
+  height: 100%;
+  width: 100%;
+  min-height: 500px;
   transform: rotateX(70deg);
   align-items: center;
   justify-content: center;
+}
+@media only screen and (max-width: 600px) {
+  .solarSystem {
+    scale: 0.9;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .solarSystem {
+    scale: 1.2;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .solarSystem {
+    scale: 1.5;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .solarSystem {
+    scale: 0.7;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .solarSystem {
+    scale: 1;
+  }
 }
 
 .solarSystem_sun {
@@ -436,6 +558,44 @@
   100% {
     rotate: 360deg;
     box-shadow: inset 0 0 calc(13.2px / 2) rgba(0, 0, 0, 0.5);
+  }
+}
+
+.popupPlanet {
+  display: none;
+  left: 100%;
+  top: 50%;
+  position: absolute;
+  min-width: 160px;
+  min-height: 160px;
+  transform: translateZ(999px);
+  backdrop-filter: blur(3px);
+  border: 3px #dde3ff dotted;
+  animation: 1s 1 showPopup ease-out;
+}
+.popupPlanet p {
+  padding: 4px;
+  font-size: 26px;
+  color: #dde3ff;
+  border-bottom: 1px #dde3ff dotted;
+}
+.popupPlanet main {
+  padding: 4px;
+  font-size: 18px;
+  color: #dcdcdc;
+  border-bottom: 1px #dde3ff dotted;
+}
+.popupPlanet footer {
+  padding: 4px;
+  font-size: 18px;
+  color: #dcdcdc;
+}
+@keyframes showPopup {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
