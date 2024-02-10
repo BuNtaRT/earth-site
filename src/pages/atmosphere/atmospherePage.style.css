@@ -1,23 +1,36 @@
+.atmosphere_container {
+  perspective: 1000px;
+}
+
 .atmosphere_clouds {
-  width: 100%;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  transform-style: preserve-3d;
 }
 
 .atmosphere_cloud {
   position: absolute;
-  object-fit: cover;
-  height: 100vh;
+  inset: -5vh;
+  background-size: cover !important;
+  background-position: center !important;
 }
 
-.cloud1 {
-  z-index: 1;
-}
-
-.cloud2 {
+.text_atmosphere_container {
+  display: flex;
+  flex-direction: column-reverse;
   z-index: 2;
+  position: absolute;
+  bottom: 0;
+  padding: 150px;
+}
+.text_atmosphere_container > .textBlockContainer {
+  backdrop-filter: sepia(1) hue-rotate(212deg) blur(5px) brightness(0.5);
 }
 
-.cloud3 {
-  z-index: 3;
+.atmosphere_description {
+  max-height: 200px;
+  overflow: auto;
 }
 
 /*# sourceMappingURL=atmospherePage.style.css.map */

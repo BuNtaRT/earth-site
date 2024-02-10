@@ -79,41 +79,6 @@
   }
 }
 
-@media only screen and (max-width: 600px) {
-  .text {
-    height: false;
-  }
-}
-@media only screen and (min-width: 600px) {
-  .text {
-    height: false;
-  }
-}
-@media only screen and (min-width: 768px) {
-  .text {
-    height: calc((1vh + 1vw) * 9);
-  }
-}
-@media only screen and (min-width: 992px) {
-  .text {
-    height: calc((1vh + 1vw) * 24);
-  }
-}
-@media only screen and (min-width: 1200px) {
-  .text {
-    height: calc((1vh + 1vw) * 19);
-  }
-}
-.text p {
-  text-indent: calc((1vh + 1vw) * 0.8);
-  font-size: calc((1vh + 1vw) * 0.8);
-}
-.text p a {
-  cursor: pointer;
-  text-decoration: none;
-  color: #9cb6ff;
-}
-
 .solarSystem {
   display: flex;
   transform-style: preserve-3d;
@@ -166,8 +131,8 @@
   pointer-events: auto;
   transform-style: preserve-3d;
   position: absolute;
-  height: 58px;
-  width: 58px;
+  height: 65px;
+  width: 65px;
   border: 1px #dcdcdc solid;
   border-radius: 100%;
   animation: 2.45s infinite orbitAnim linear;
@@ -566,9 +531,9 @@
   left: 100%;
   top: 50%;
   position: absolute;
-  min-width: 160px;
+  width: 160px;
   min-height: 160px;
-  transform: translateZ(999px);
+  transform: translateZ(-55px);
   backdrop-filter: blur(3px);
   border: 3px #dde3ff dotted;
   animation: 1s 1 showPopup ease-out;

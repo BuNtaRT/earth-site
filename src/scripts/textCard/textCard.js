@@ -1,3 +1,5 @@
+import "../../styles/components/textBlock/textBlock.scss";
+
 const textCardInit = () => {
   const cards = document.querySelectorAll(".textBlock");
 

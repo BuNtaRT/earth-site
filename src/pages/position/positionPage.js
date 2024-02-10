@@ -1,10 +1,11 @@
 import { setHtml } from "../../scripts/utils/setHtml";
 import html from "./positionPage.html";
 import "./positionPage.style.scss";
-import "../../styles/components/textBlock/textBlock.scss";
 import textCardInit from "../../scripts/textCard/textCard";
 
 let popup;
+let currenPopupElem;
+let showPopup = false;
 
 export const initPage = () => {
   setHtml("#page2", html);
@@ -23,6 +24,7 @@ export const initPage = () => {
       planet.style.animationDelay = delay;
     }
   }
+  setInterval(reposition, 25);
 };
 
 function planetRef() {
@@ -39,21 +41,26 @@ function setPlanetInfo({ name, speed, description, planetClass }) {
   const innerName = popup.querySelector("p").innerHTML;
 
   if (innerName === name) {
-    popup.style.display = popup.style.display === "none" ? "block" : "none";
+    showPopup = popup.style.display === "none";
+    popup.style.display = showPopup ? "block" : "none";
   } else {
+    showPopup = true;
     popup.style.display = "block";
     popup.querySelector("p").innerHTML = name;
     popup.querySelector("main").innerHTML = `Скорость: ${speed}`;
     popup.querySelector("footer").innerHTML = description;
 
-    //todo: разобраться со смещением из-за перспективы
-    if (planetClass === ".solarSystem_mercury_planet")
-      popup.style.left = `-60px`;
-    if (planetClass === ".solarSystem_venus_planet") popup.style.left = `-10px`;
-
-    planet.appendChild(popup);
+    currenPopupElem = planet;
   }
 }
+
+const reposition = () => {
+  if (currenPopupElem && showPopup) {
+    const rect = currenPopupElem.getBoundingClientRect();
+    popup.style.left = `${rect.left + window.scrollX + rect.width + 8}px`;
+    popup.style.top = `${rect.top + window.scrollY + 8}px`;
+  }
+};
 
 const planetData = [
   {

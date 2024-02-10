@@ -1,0 +1,98 @@
+/*For more stable*/
+.borders {
+  pointer-events: none;
+  z-index: 3;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+
+.borders_show .border_top::after {
+  transition: height 1.5s linear;
+  height: 75px;
+}
+.borders_show .border_bottom::after {
+  transition: height 1.5s linear;
+  height: 75px;
+}
+
+.borders_hide .border_top::after {
+  transition: height 6s ease-out;
+  height: 0;
+}
+.borders_hide .border_bottom::after {
+  transition: height 6s ease-out;
+  height: 0;
+}
+
+.border, .border_bottom, .border_top {
+  height: 50%;
+  position: relative;
+}
+.border::after, .border_bottom::after, .border_top::after {
+  left: 0;
+  position: absolute;
+  width: 100%;
+  background: #101118;
+}
+@media (min-width: 768px) and (min-height: 600px) {
+  .border::after, .border_bottom::after, .border_top::after {
+    content: "";
+  }
+}
+
+.border_top::after {
+  top: 0;
+}
+
+.border_bottom::after {
+  bottom: 0;
+}
+
+/*For more stable*/
+.textBlockContainer {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  min-width: 32px;
+  min-height: fit-content;
+  padding: 16px;
+  backdrop-filter: hue-rotate(300deg);
+  border: 5px #dde3ff dotted;
+}
+
+@media only screen and (max-width: 600px) {
+  .text {
+    height: false;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .text {
+    height: false;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .text {
+    height: calc((1vh + 1vw) * 9);
+  }
+}
+@media only screen and (min-width: 992px) {
+  .text {
+    height: calc((1vh + 1vw) * 24);
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .text {
+    height: calc((1vh + 1vw) * 19);
+  }
+}
+.text p {
+  text-indent: calc((1vh + 1vw) * 0.8);
+  font-size: calc((1vh + 1vw) * 0.8);
+}
+.text p a {
+  cursor: pointer;
+  text-decoration: none;
+  color: #9cb6ff;
+}
+
+/*# sourceMappingURL=textBlock.css.map */

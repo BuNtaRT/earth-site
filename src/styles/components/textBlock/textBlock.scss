@@ -1,4 +1,5 @@
 @import "../../palette";
+@import "../../index";
 
 .textBlockContainer {
   transform-style: preserve-3d;
@@ -10,5 +11,25 @@
 
   backdrop-filter: hue-rotate(300deg);
   border: 5px $mainFontColor dotted;
+}
 
+.text {
+  @include mediaProp(
+    height,
+    false,
+    false,
+    absoluteSize(9),
+    absoluteSize(24),
+    absoluteSize(19)
+  );
+
+  p {
+    text-indent: absoluteSize(0.8);
+    font-size: absoluteSize(0.8);
+    a {
+      cursor: pointer;
+      text-decoration: none;
+      color: $link;
+    }
+  }
 }

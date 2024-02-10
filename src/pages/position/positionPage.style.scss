@@ -14,26 +14,7 @@
   min-height: 300px;
 }
 
-.text {
-  @include mediaProp(
-    height,
-    false,
-    false,
-    absoluteSize(9),
-    absoluteSize(24),
-    absoluteSize(19)
-  );
 
-  p {
-    text-indent: absoluteSize(0.8);
-    font-size: absoluteSize(0.8);
-    a {
-      cursor: pointer;
-      text-decoration: none;
-      color: $link;
-    }
-  }
-}
 
 .solarSystem {
   @include mediaProp(scale, 0.9, 1.2, 1.5, 0.7, 1);
@@ -61,7 +42,6 @@
   border: 1px $secondWhite solid;
   border-radius: 100%;
 
-  //rotate: -150deg;
   animation: #{$speed}s infinite orbitAnim linear;
 }
 
@@ -124,7 +104,7 @@
   border-radius: 100%;
 }
 .solarSystem_mercury {
-  @include orbit(58px, 2.45);
+  @include orbit(65px, 2.45);
   .solarSystem_mercury_planet {
     @include planet($mercury, 10px, 2.45, mercury_anim);
   }
@@ -186,10 +166,10 @@
   left: 100%;
   top: 50%;
   position: absolute;
-  min-width: 160px;
+  width: 160px;
   min-height: 160px;
 
-  transform: translateZ(999px);
+  transform: translateZ(-55px);
 
   backdrop-filter: blur(3px);
   border: 3px $mainFontColor dotted;
