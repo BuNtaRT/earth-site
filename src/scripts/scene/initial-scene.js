@@ -1,7 +1,6 @@
 import * as Three from "three";
 import postProcessing from "./render/post-processing";
 import orbitControl from "./interaction/orbit-control";
-import initialLight from "./light/light";
 
 const initialScene = () => {
   //-------------------------- Setup
@@ -36,8 +35,6 @@ const initialScene = () => {
 
   //-------------------------- Control
   const controls = orbitControl(camera, renderer);
-
-  initialLight(scene);
 
   window.addEventListener("resize", () => {
     camera.aspect = window.innerWidth / window.innerHeight;

@@ -3,15 +3,16 @@ import { setHtml } from "../../scripts/utils/setHtml";
 import "./earchPage.style.scss";
 import { setPage } from "../../scripts/pageSwitcher";
 
-export const initPage = () => {
-  setHtml("#page1", html);
+export const initPage = (hide = false) => {
+  setHtml("#page1", html, hide);
+
+  if (hide) return;
+
   const positionButton = document.querySelector("#earth_menu_position");
   const atmosphereButton = document.querySelector("#earth_menu_atmosphere");
-  const surfaceButton = document.querySelector("#earth_menu_surface");
 
   positionButton.onclick = handleClick(1);
   atmosphereButton.onclick = handleClick(2);
-  surfaceButton.onclick = handleClick(3);
 };
 
 const handleClick =

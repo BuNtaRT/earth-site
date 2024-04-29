@@ -1,14 +1,16 @@
+@import "./animations";
+
 @font-face {
-  font-family: 'SaarSPDemo';
-  src: url('../../static/fonts/SaarSPDemo.otf');
+  font-family: "SaarSPDemo";
+  src: url("../../static/fonts/SaarSPDemo.otf");
 }
 @font-face {
-  font-family: 'jekr';
-  src: url('../../static/fonts/JEKR.TTF');
+  font-family: "jekr";
+  src: url("../../static/fonts/JEKR.TTF");
 }
 @font-face {
-  font-family: 'BankGothicMedium';
-  src: url('../../static/fonts/BankGothicMedium.ttf');
+  font-family: "BankGothicMedium";
+  src: url("../../static/fonts/BankGothicMedium.ttf");
 }
 
 * {
@@ -29,4 +31,29 @@ body {
 
 .blur {
   filter: blur(6px);
+}
+
+.invisible {
+  opacity: 0;
+}
+
+.fade {
+  animation: 1.5s fade_hide_show ease-in-out forwards;
+}
+@keyframes fade_hide_show {
+  0% {
+    opacity: 1;
+  }
+
+  20% {
+    opacity: 0;
+  }
+
+  70% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

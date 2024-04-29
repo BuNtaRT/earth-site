@@ -5,11 +5,12 @@ import "./atmospherePage.style.scss";
 let page;
 let clouds;
 
-export const initPage = () => {
-  page = setHtml("#page3", html);
-  clouds = page.querySelectorAll(".atmosphere_cloud");
+export const initPage = (hide = false) => {
+  page = setHtml("#page3", html, hide);
 
-  console.log(clouds);
+  if (hide) return;
+
+  clouds = page.querySelectorAll(".atmosphere_cloud");
 
   page.addEventListener("mousemove", (evt) => {
     const x = (evt.clientX - window.innerWidth / 2) * -0.01;

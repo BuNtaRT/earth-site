@@ -6,14 +6,17 @@ import { docSlider } from "./libs/docSlider/docSlider";
 import { initPage as page0 } from "../pages/earth/earthPage";
 import { initPage as page1 } from "../pages/position/positionPage";
 import { initPage as page2 } from "../pages/atmosphere/atmospherePage";
-import { initPage as page3 } from "../pages/surface/surfacePage";
 
-const pageScript = [page0, page1, page2, page3];
+const pageScript = [page0, page1, page2];
 const modelContainer = document.querySelector(".model-container");
 const borders = document.querySelector(".borders");
 
 export const setPage = (page = 0, fromPage = 0) => {
   pageScript[page]();
+  if (page !== fromPage) {
+    pageScript[fromPage](true);
+    fadePage();
+  }
 
   setFullPageScroll(page);
   moveCamera(page);
@@ -41,6 +44,13 @@ const setFullPageScroll = (page) => {
   fullPageScroll.style.pointerEvents = enable ? "all" : "none";
   fullPageScroll.classList.remove(enable ? "hideDots" : "showDots");
   fullPageScroll.classList.add(enable ? "showDots" : "hideDots");
+};
+
+//-------------------------- FADE
+const fadePage = () => {
+  fullPageScroll.classList.remove("fade");
+  fullPageScroll.offsetHeight;
+  fullPageScroll.classList.add("fade");
 };
 
 //-------------------------- TITLE

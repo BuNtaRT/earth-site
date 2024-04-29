@@ -7,8 +7,10 @@ let popup;
 let currenPopupElem;
 let showPopup = false;
 
-export const initPage = () => {
-  setHtml("#page2", html);
+export const initPage = (hide = false) => {
+  setHtml("#page2", html, hide);
+  if (hide) return;
+
   textCardInit();
   planetRef();
 

@@ -23,15 +23,11 @@ particlesStars(scene);
 
 //-------------------------- Update
 const clock = new Three.Clock();
-// const stats = new Stats();
-// stats.showPanel(1); // 0: fps, 1: ms, 2: mb, 3+: custom
-// document.body.appendChild(stats.dom);
 let delta;
 const planetSpeed = 0.01;
 
 const animate = () => {
   requestAnimationFrame(animate);
-  // stats.begin();
 
   if (planet) {
     delta = clock.getDelta();
@@ -48,7 +44,6 @@ const animate = () => {
 
     composer.render();
   }
-  // stats.end();
 };
 
 setPage();

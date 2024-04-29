@@ -12,7 +12,6 @@ const animateParticles = (points) => {
     const size = points.length / batchSize;
 
     animatePoints(currentlyBatch * size, size, points);
-    //animatePoints(0, points.length, points);
 
     currentlyBatch = currentlyBatch === batchSize - 1 ? 0 : currentlyBatch + 1;
     skipFrame = skipFrameCount;

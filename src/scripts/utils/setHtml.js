@@ -1,7 +1,14 @@
-export const setHtml = (id, html) => {
+export const setHtml = (id, html, hide = false) => {
   const element = document.querySelector(id);
 
-  if (element) element.innerHTML = html;
+  if (hide)
+    setTimeout(() => {
+      element.classList.add("invisible");
+    }, 300);
+  else if (element) {
+    element.classList.remove("invisible");
+    element.innerHTML = html;
+  }
 
   return element;
 };
